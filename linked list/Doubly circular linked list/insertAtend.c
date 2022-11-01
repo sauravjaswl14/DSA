@@ -7,14 +7,13 @@ struct node
     struct node *next;
     struct node *prev;
 };
-
-struct node *head,*tail;
+struct node *head,*tail;    
 
 void create()
 {
     int choice=1;
-    head=0;
     struct node *newnode;
+    head=0;
     while(choice)
     {
         newnode=(struct node*)malloc(sizeof(struct node));
@@ -23,21 +22,20 @@ void create()
         if(head==0)
         {
             head=tail=newnode;
-            head->next=head;
-            head->prev=head;
+            newnode->next=head;
+            newnode->prev=tail;
         }
-        else{
+        else
+        {
             tail->next=newnode;
             newnode->prev=tail;
             newnode->next=head;
             head->prev=newnode;
             tail=newnode;
         }
-        printf("do you want to continue?(0/1):?");
+        printf("continue adding nodes?(0/1):");
         scanf("%d",&choice);
     }
-    printf("%d\n",tail->next->data);
-    printf("%d\n",head->prev->data);
 }
 
 void display()
@@ -52,8 +50,32 @@ void display()
     printf("%d",temp->data);
 }
 
+void insertAtEnd()
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("\nenter data in newly created node:");
+    scanf("%d",&newnode->data);
+    if(head==0)
+    {
+        head=tail=newnode;
+        newnode->next=head;
+        newnode->prev=tail;
+    }
+    else{
+        tail->next=newnode;
+        newnode->prev=tail;
+        newnode->next=head;
+        head->prev=newnode;
+        tail=newnode;
+
+    }
+}
+
 void main()
 {
     create();
+    display();
+    insertAtEnd();
     display();
 }
