@@ -45,9 +45,10 @@ void display()
         printf("queue is empty");
     }
     else{
+        printf("\nqueue is:");
         for(i=front;i<rear+1;i++)
         {
-            printf("%d",queue[i]);
+            printf("%d\t",queue[i]);
         }
     }
 }

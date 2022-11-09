@@ -34,6 +34,7 @@ void display()
     }
     else{
         temp=front;
+        printf("queue is: ");
         while(temp!=0)
         {
             printf("%d\t",temp->data);
@@ -49,6 +50,11 @@ void dequeue()
     if(front==0 && rear==0)
     {
         printf("queue is empty");
+    }
+    else if(front==rear)
+    {
+        front=rear=0;
+        free(temp);
     }
     else{
         printf("dequeued element is: %d",front->data);
